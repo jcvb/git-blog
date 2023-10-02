@@ -1,0 +1,8 @@
+<div>
+  <h3>{{ category}}</h3>
+  <div class="grid grid-cols-1 gap-3">
+    <div *ngFor="let post of posts; let i = index">
+      <app-post [post]="post" [vertical]="true" [hasImage]="i < 1 ? true: false"></app-post>
+    </div>
+  </div>
+</div>

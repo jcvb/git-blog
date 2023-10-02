@@ -1,0 +1,14 @@
+<div class="flex" [ngClass]="{ 'flex-col' : vertical, 'flex-row': !vertical}">
+  <div *ngIf="hasImage">
+    <img class="w-full" [ngClass]="{'h-96' : vertical, 'h-40 w-48': !vertical}" src={{post.image}} alt="image" />
+  </div>
+  <div class="flex flex-col px-4">
+    <span class="text-blue-600 text-sm">{{post.category}}</span>
+    <span class="text-2xl font-bold">{{post.title}}</span>
+    <span class=" text-gray-700">{{post.body}}</span>
+    <div>
+      <span class="font-bold">{{post.author}}</span>
+      <span class="text-sm text-gray-500">{{post.date | date}}</span>
+    </div>
+  </div>
+</div>
