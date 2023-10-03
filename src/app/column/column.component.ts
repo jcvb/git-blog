@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostsService } from '../posts.service';
+import { Post } from '../model/post';
 
 @Component({
   selector: 'app-column',
@@ -8,12 +8,5 @@ import { PostsService } from '../posts.service';
 })
 export class ColumnComponent {
   @Input() category!: string;
-  posts: Array<any> = [];
-
-  constructor(private postsService: PostsService) {}
-  ngOnInit() {
-    this.postsService.getPostByCategory(this.category).then((posts: any) => {
-      this.posts = posts;
-    });
-  }
+  @Input() posts!: Array<Post>;
 }

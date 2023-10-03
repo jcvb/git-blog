@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
-import { CategoriesService } from './categories.service';
-
+import { PostsService } from './posts.service';
+import { Post } from './model/post';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'git-blog';
   categories: Array<string> = [];
-  constructor(private categoriesService: CategoriesService) { }
+  posts: Array<Post> = [];
+  constructor(
+    private postService: PostsService
+  ) {}
 
   ngOnInit() {
-    this.categoriesService.getCategories().then(categories => this.categories = categories);
+    this.categories = ['Enterprise', 'Education', 'Policy', 'Company'];
+    this.postService.fetchData().subscribe((response) => {
+      this.posts = response;
+    });
   }
 }

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { PostsService } from '../posts.service';
+import { Component, Input } from '@angular/core';
 import  {Post} from '../model/post';
 
 @Component({
@@ -8,15 +7,14 @@ import  {Post} from '../model/post';
   styleUrls: ['./side.component.css']
 })
 export class SideComponent {
+  @Input() posts!: Array<Post>;
 
-  posts: Array<Post> = [];
-  constructor(private postsService: PostsService) {
-  }
+  newPosts: Array<Post> = [];
 
   ngOnInit() {
-    this.postsService.getPosts().then((posts: any) => {
-      this.posts = posts;
-    })
+
+      this.newPosts = this.posts.slice(0, 3);
+
   }
 
 }
